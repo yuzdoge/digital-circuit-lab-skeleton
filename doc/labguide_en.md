@@ -23,6 +23,10 @@
 |  1000  | unused | unused |  imm   |     jump imm     |        pc = imm         |
 |  1100  |   rd   |  rs1   |  imm   | ld rd, (imm)rs1  | R[rd] = Mem[R[rs1]+imm] |
 |  1101  |  rs2   |  rs1   |  imm   | st rs2, (imm)rs1 |  Mem[R[rs1]+imm] = rs2  |
+```ad-important
+In the ISA, 8 bit data convert to 16 bit data with zero extension. 
+For example: 8'b1101_1100 -> 16'b0000_0000_1101_1100 
+```
 
 ## File List
 
