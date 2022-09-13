@@ -7,11 +7,9 @@ module alu #(
 	input clk, rst_n, en_in,
 	input  [2 : 0] alu_func,
 	input  [DWIDTH - 1 : 0] alu_a, alu_b,
-	output [DWIDTH - 1 : 0] alu_out,
-	output en_out
+	output reg [DWIDTH - 1 : 0] alu_out,
+	output reg en_out
 );
-	reg [DWIDTH - 1 : 0] alu_out;
-	reg  en_out;
 	localparam defaultval = {(DWIDTH){1'b0}};
 
 	always @(negedge rst_n or posedge clk) begin

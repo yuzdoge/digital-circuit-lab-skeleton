@@ -1,3 +1,5 @@
+/* verilator lint_off UNUSED */
+`timescale 1 ns / 1 ns
 module alu_mux #(
 	parameter DWIDTH = 16
 )(
@@ -5,11 +7,9 @@ module alu_mux #(
 	input alu_in_sel,
 	input  [DWIDTH - 1 : 0] rd_q, rs_q,
 	input  [7 : 0] offset,
-	output [DWIDTH - 1 : 0] alu_a,alu_b,
-	output en_out
+	output reg [DWIDTH - 1 : 0] alu_a, alu_b,
+	output reg en_out
 );
-	reg [DWIDTH - 1 : 0] alu_a,alu_b;
-	reg  en_out;
 
 	always @(negedge rst_n or posedge clk) begin
 		if (rst_n ==1'b0) begin
@@ -26,4 +26,5 @@ module alu_mux #(
 			en_out  <= 1'b0;
 		end
     end
+
 endmodule

@@ -10,7 +10,7 @@ ROOT_DIR  := $(shell pwd)
 RTL       += $(shell find $(ROOT_DIR)/rtl -type f -name "*.v")
 # include diretory
 INC_DIR   := $(ROOT_DIR)/rtl
-TOP       ?=
+TOP       ?= cpu_top
 TB        ?= tb_cpu
 
 # Set simulator
@@ -45,6 +45,9 @@ sim: sim/$(TB)
 	@echo "*********Simulation is done. You can see the waveform with gtkwave.************"
 	@echo ""
 	@echo ""
+
+lint:
+	verilator --lint-only -Wall -Wno-DECLFILENAME --top-module $(TOP) -I$(INC_DIR) $(RTL)
 
 clean:
 	@rm -f sim/*.tbi sim/*.$(WAVEFORMAT)

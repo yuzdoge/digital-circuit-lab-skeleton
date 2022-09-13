@@ -1,3 +1,5 @@
+/* verilator lint_off UNUSED */
+`timescale 1 ns / 1 ns
 module control_unit #(
 	parameter DWIDTH = 16
 )(
@@ -8,14 +10,13 @@ module control_unit #(
 	output en_pc_pulse,
 	output en_ram_in,
 	output alu_in_sel,
-	output [7 : 0] offset_addr,
+	output reg [7 : 0] offset_addr,
 	output [3 : 0] reg_en,
 	output [2 : 0] alu_func,
 	output [1 : 0] pc_ctrl
 );
 
 	wire [DWIDTH - 1 : 0] ir_out;
-	wire [7 : 0] offset_addr;
 	wire en_out;
 
 	ir ir_i (

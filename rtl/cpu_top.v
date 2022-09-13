@@ -1,11 +1,9 @@
+/* verilator lint_off UNUSED */ 
 `timescale 1ns / 1ns
-
 module cpu_top #(
 	parameter DWIDTH = 16,
 	parameter AWIDTH = 12
-)(
-	input clk, rst_n,
-	input en_in
+)( input clk, rst_n, input en_in
 );
     wire en_ram_in, en_ram_out;
     wire [DWIDTH - 1 : 0] addr, ins;

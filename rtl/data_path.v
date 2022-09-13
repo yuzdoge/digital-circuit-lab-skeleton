@@ -1,3 +1,5 @@
+`timescale 1 ns / 1 ns
+
 module data_path #(
 	parameter DWIDTH = 16
 )(
@@ -11,8 +13,8 @@ module data_path #(
 	output [DWIDTH - 1 : 0] pc_out,
 	output  en_out
 );
-	wire [DWIDTH - 1 : 0] rd_q, rs_q, pc_q, alu_a, alu_b, alu_out;	
-	wire en_out_group, en_out_alu_mux;  
+	wire [DWIDTH - 1 : 0] rd_q, rs_q, alu_a, alu_b, alu_out;
+	wire en_out_group, en_out_alu_mux;
 
 	pc pc_i(
 		.clk(clk),
@@ -33,8 +35,7 @@ module data_path #(
 		.rs(rs),
 		.rd_q(rd_q),
 		.en_out(en_out_group),
-		.rs_q(rs_q),
-		.pc_q(pc_q)		
+		.rs_q(rs_q)
 	);
 			
 	alu_mux alu_mux_i (                                        

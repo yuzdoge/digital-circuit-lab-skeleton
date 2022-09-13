@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ns
 module cpu #(
 	parameter DWIDTH = 16
 )(
@@ -17,7 +18,6 @@ module cpu #(
 	wire [3 : 0] reg_en;
 	wire [2 : 0] alu_func;
 	wire [7 : 0] offset_addr;
-	wire en_ram_out;
 
 	data_path data_path_i (
 		.clk(clk),

@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ns
 module irom #(
 	parameter DWIDTH = 16,
 	parameter AWIDTH = 12,

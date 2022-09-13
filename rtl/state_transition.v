@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ns
 `include "opcode.vh"
 `include "alufunc.vh"
 module state_transition (

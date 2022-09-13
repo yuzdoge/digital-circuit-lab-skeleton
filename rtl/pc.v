@@ -1,3 +1,4 @@
+/* verilator lint_off UNUSED */
 `timescale 1 ns / 1 ns
 module pc #(
 	parameter DWIDTH = 16

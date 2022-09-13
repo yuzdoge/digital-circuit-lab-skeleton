@@ -6,7 +6,7 @@ module reg_group #(
     input [3 : 0]  reg_en,
     input [1 : 0]  rd, rs,
     input [DWIDTH - 1 : 0] d_in,
-    output reg [DWIDTH - 1 : 0] rd_q, rs_q, pc_q,
+    output reg [DWIDTH - 1 : 0] rd_q, rs_q,
     output reg en_out
 );
 	localparam defaultval = {(DWIDTH){1'b0}};

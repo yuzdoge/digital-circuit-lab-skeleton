@@ -1,3 +1,5 @@
+/* verilator lint_off UNDRIVEN */
+`timescale 1 ns / 1 ns
 module SYNC_ROM #(
 	parameter DWIDTH = 16,
 	parameter AWIDTH = 12,
@@ -10,6 +12,7 @@ module SYNC_ROM #(
 );
 
 	reg [DWIDTH - 1 : 0] mem[0 : DEPTH - 1];
+
 /*
 	initial begin
 		mem[0] = 16'b0000_0000_0000_0100; //mov r0 #4, R[x0] = 4;
@@ -18,6 +21,9 @@ module SYNC_ROM #(
 		mem[3] = 16'b1010_0000_0000_0000; //jump #0
 	end
 */
+// If not give a input(driven) to mem or initialize it, the verilator will 
+// rise a undriven warning. But doesn't matter here, so we turn off this warning.
+
 
 	always @(posedge clk) begin
 		if (en) begin 
