@@ -11,28 +11,28 @@
 
 ### Basic Instruction Encode
 
-| opcode | rd/rs2 |  rs1   |  imm   |       asm        |         description         |
-| :----: | :----: | :----: | :----: | :--------------: | :-------------------------: |
-|  0000  |   rd   | unused |  imm   |   movi rd, imm   |    R[rd] = imm = imm + 0    |
-|  0001  |   rd   |  rs1   | unused |   mov rd, rs1    | R[rd] = R[rs1] = R[rs1] + 0 |
-|  0010  |   rd   | unused |  imm   |   addi rd, imm   |     R[rd] = R[rd] + imm     |
-|  0011  |   rd   |  rs1   | unused |   add rd, rs1    |   R[rd] = R[rd] + R[rs1]    |
-|  0101  |   rd   |  rs1   | unused |   sub rd, rs1    |   R[rd] = R[rd] - R[rs1]    |
-|  0110  |   rd   | unused |  imm   |   andi rd, imm   |     R[rd] = R[rd] & imm     |
-|  0111  |   rd   |  rs1   | unused |   and rd, rs1    |   R[rd] = R[rd] & R[rs1]    |
-|  1001  |   rd   |  rs1   | unused |  or    rd, rs1   |   R[rd] = R[rd] \| R[rs1]   |
-|  1010  | unused | unused |  imm   |     jump imm     |          pc = imm           |
-|  1100  |   rd   |  rs1   |  imm   | ld rd, (imm)rs1  |   R[rd] = Mem[R[rs1]+imm]   |
-|  1101  |  rs2   |  rs1   |  imm   | st rs2, (imm)rs1 |    Mem[R[rs1]+imm] = rs2    |
+| opcode | rd/rs2 |  rs1   |  imm   |       asm        |       description       |
+| :----: | :----: | :----: | :----: | :--------------: | :---------------------: |
+|  0000  |   rd   | unused |  imm   |   movi rd, imm   |  R[rd] = imm = imm + 0  |
+|  0001  |   rd   | unused |  imm   |   addi rd, imm   |   R[rd] = R[rd] + imm   |
+|  0010  |   rd   |  rs1   | unused |   add rd, rs1    | R[rd] = R[rd] + R[rs1]  |
+|  0011  |   rd   |  rs1   | unused |   sub rd, rs1    | R[rd] = R[rd] - R[rs1]  |
+|  0100  |   rd   | unused |  imm   |   andi rd, imm   |   R[rd] = R[rd] & imm   |
+|  0101  |   rd   |  rs1   | unused |   and rd, rs1    | R[rd] = R[rd] & R[rs1]  |
+|  0110  |   rd   |  rs1   | unused |  or    rd, rs1   | R[rd] = R[rd] \| R[rs1] |
+|  1000  | unused | unused |  imm   |     jump imm     |        pc = imm         |
+|  1100  |   rd   |  rs1   |  imm   | ld rd, (imm)rs1  | R[rd] = Mem[R[rs1]+imm] |
+|  1101  |  rs2   |  rs1   |  imm   | st rs2, (imm)rs1 |  Mem[R[rs1]+imm] = rs2  |
 
 ## File List
 
 ```shell
 DigitalLab
 ├── doc
-│   └── labguide.md
+│   └── labguide_en.md
 ├── Makefile
 ├── rtl
+│   ├── alufunc.vh          # Head file includes the macro of alu functions.
 │   ├── alu_mux.v           # Module for selecting source operands of ALU.
 │   ├── alu.v               # ALU.
 │   ├── control_unit.v      # CPU controller.

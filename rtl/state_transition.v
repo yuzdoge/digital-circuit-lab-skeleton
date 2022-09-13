@@ -21,15 +21,15 @@ module state_transition (
 
 	reg [3 : 0] current_state, next_state;
 
-	localparam Initial = 4'b0000;
-	localparam Fetch = 4'b0001;
-	localparam Decode = 4'b0010;
-    localparam Execute_Add = 4'b1000;
-	localparam Write_Back = 4'b0011;
+	localparam INIT= 4'b0000;
+	localparam IF = 4'b0001;
+	localparam ID = 4'b0010;
+    localparam EX_AL = 4'b1000;
+	localparam WB = 4'b0011;
 
 	always @ (posedge clk or negedge rst_n) begin
 		if(!rst_n) begin
-			current_state <= Initial;
+			current_state <= INIT;
 		end
 		else begin 
 			current_state <= next_state;
@@ -38,42 +38,44 @@ module state_transition (
 
 	always @ (*) begin
 		case (current_state)
-			Initial: begin
+			INIT: begin
 				if (en_in) begin 
-					next_state = Fetch;
+					next_state = IF;
 				end
 				else begin
-					next_state = Initial;
+					next_state = INIT;
 				end
 			end
 
-			Fetch: begin
+			IF: begin
 				if (en1) begin
-					next_state = Decode;
+					next_state = ID;
 				end
 				else begin
 					next_state = current_state;
 				end
 			end
 
-			Decode: begin
-				case (opcode) 
-					`ADD:    next_state = Execute_Add;
-					default: next_state = current_state;
-				endcase
+			ID: begin
+				if (opcode[3] == 1'b0) begin
+					next_state = EX_AL;
+				end
+				else begin
+					next_state = current_state;
+				end
 			end
 
-			Execute_Add: begin
+			EX_AL: begin
 				if (en2) begin
-					next_state = Write_Back;
+					next_state = WB;
 				end
 				else begin
 					next_state = current_state;
 				end
 			end  
 
-			Write_Back: begin
-				next_state = Fetch;
+			WB: begin
+				next_state = IF;
 			end
 
 			default: next_state = current_state;
@@ -92,7 +94,7 @@ module state_transition (
 		end
 		else begin
 			case (next_state)
-				Initial: begin
+				INIT: begin
 					en_fetch = 1'b0;
 					en_group = 1'b0;
 					en_pc = 1'b0;
@@ -102,7 +104,7 @@ module state_transition (
 					alu_func = `ALU_ADD;
 				end
 
-				Fetch: begin
+				IF: begin
 					en_fetch = 1'b1;
 					en_group = 1'b0;
 					en_pc = 1'b1;
@@ -112,7 +114,7 @@ module state_transition (
 					alu_func = `ALU_ADD;
 				end
 
-				Decode: begin
+				ID: begin
 					en_fetch = 1'b0;
 					en_group = 1'b0;
 					en_pc = 1'b0;
@@ -122,17 +124,30 @@ module state_transition (
 					alu_func = `ALU_ADD;
 				end
 
-				Execute_Add: begin
-					en_fetch = 1'b0;
-					en_group = 1'b1;
-					en_pc = 1'b0;
-					pc_ctrl = 2'b00;
-					reg_en = 4'b0000;
-					alu_in_sel = 1'b1;
-					alu_func = `ALU_ADD;
+				EX_AL: begin
+					case (opcode)
+						`ADD: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b1;
+							alu_func = `ALU_ADD;
+						end
+						default: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b1;
+							alu_func = `ALU_ADD;
+						end
+					endcase
 				end
 
-				Write_Back: begin
+				WB: begin
 					en_fetch = 1'b0;
 					en_group = 1'b0;
 					en_pc = 1'b0;

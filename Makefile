@@ -40,7 +40,11 @@ endif
 
 # Target or Commands
 sim: sim/$(TB)
+	@echo ""
+	@echo ""
 	@echo "*********Simulation is done. You can see the waveform with gtkwave.************"
+	@echo ""
+	@echo ""
 
 clean:
 	@rm -f sim/*.tbi sim/*.$(WAVEFORMAT)
