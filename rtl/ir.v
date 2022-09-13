@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ns
 module ir #(
-	DWIDTH = 16
+	parameter DWIDTH = 16
 )(
 	input clk, rst_n, en_in,
 	input [DWIDTH - 1 : 0] ins,
