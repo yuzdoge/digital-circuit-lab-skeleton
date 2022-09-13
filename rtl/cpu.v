@@ -1,5 +1,5 @@
 module cpu #(
-	DWIDTH = 16
+	parameter DWIDTH = 16
 )(
 	input clk, rst_n, en_in,
 	input en_ram_out,

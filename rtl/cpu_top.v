@@ -1,8 +1,8 @@
 `timescale 1ns / 1ns
 
 module cpu_top #(
-	DWIDTH = 16,
-	AWIDTH = 12
+	parameter DWIDTH = 16,
+	parameter AWIDTH = 12
 )(
 	input clk, rst_n,
 	input en_in
