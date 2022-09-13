@@ -62,10 +62,12 @@ module tb_cpu();
 	end
 
 	task reset;
+	begin
 		@(negedge clk);
 		rst_n = 0;
 		@(negedge clk);
 		rst_n = 1;
+	end
 	endtask
 
 	function [`DWIDTH - 1 : 0] get_rd;

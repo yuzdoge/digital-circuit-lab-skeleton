@@ -1,3 +1,11 @@
 *.vcd
 *.fst
 *.tbi
+*.cache
+*.hw
+*.ip_user_files
+*.sim
+*.xpr
+*.jou
+*.log
+*\.Xil
