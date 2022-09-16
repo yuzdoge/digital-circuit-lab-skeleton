@@ -10,7 +10,7 @@ module control_unit #(
 	output en_pc_pulse,
 	output en_ram_in,
 	output alu_in_sel,
-	output reg [7 : 0] offset_addr,
+	output [7 : 0] offset_addr,
 	output [3 : 0] reg_en,
 	output [2 : 0] alu_func,
 	output [1 : 0] pc_ctrl

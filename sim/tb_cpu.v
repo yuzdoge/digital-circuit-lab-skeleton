@@ -1,9 +1,6 @@
 `timescale 1 ns/1 ns
 `include  "../rtl/opcode.vh"
 
-`define RED(str) "\033[1;31m" str "\033[0m"
-`define GREEN(str) "\033[1;32m" str "\033[0m"
-
 `define IROM(addr) cpu.irom_i.sync_rom_i.mem[addr]
 
 `define REGFILE cpu.cpu_i.data_path_i.reg_group_i
