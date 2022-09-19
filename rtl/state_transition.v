@@ -20,7 +20,7 @@ module state_transition (
 	reg en_group_reg, en_group;
 	reg en_pc_reg,    en_pc;
 
-	reg [3 : 0] current_state, next_state;
+	reg [3 : 0] current_state, next_state;//
 
 	localparam INIT= 4'b0000;
 	localparam IF = 4'b0001;
