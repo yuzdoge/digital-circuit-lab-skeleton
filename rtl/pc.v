@@ -23,9 +23,4 @@ module pc #(
 	end
 endmodule
 
-module test (
-    
-    
-);
-    
-endmodule
+
