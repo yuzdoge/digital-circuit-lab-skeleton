@@ -6,7 +6,7 @@ module alu #(
 )(
 	input clk, rst_n, en_in,
 	input  [2 : 0] alu_func,
-	input  [DWIDTH - 1 : 0] alu_a, alu_b, //alu_imm,
+	input  [DWIDTH - 1 : 0] alu_a, alu_b,
 	output reg [DWIDTH - 1 : 0] alu_out,
 	output reg en_out
 );
@@ -22,9 +22,9 @@ module alu #(
 			case (alu_func)
 				`ALU_ADD:  alu_out <= alu_a + alu_b;
 				`ALU_SUB:  alu_out <= alu_a - alu_b;
-				`ALU_ADDI: alu_out <= alu_a + alu_imm;
+				`ALU_ADDI: alu_out <= alu_a + alu_b;
 				`ALU_AND: alu_out <= alu_a & alu_b;
-				`ALU_ANDI: alu_out <= alu_a & alu_imm;
+				`ALU_ANDI: alu_out <= alu_a & alu_b;
 				`ALU_OR: alu_out <= alu_a | alu_b;
 				//`ALU_XOR: alu_out <= alu_a ^ alu_b;
 				default:   alu_out <= defaultval;
