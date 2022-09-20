@@ -1,6 +1,5 @@
 `timescale 1 ns/1 ns
 `include  "../rtl/opcode.vh"
-`include  "../rtl/alufunc.vh"
 
 `define IROM(addr) cpu.irom_i.sync_rom_i.mem[addr]
 
@@ -125,15 +124,20 @@ module tb_cpu();
 		START_ADDR = `AWIDTH'd0;
 
 		`REGFILE.x0.q = 2;
-		`REGFILE.x1.q = 3;
+		`REGFILE.x1.q = 1;
+		`REGFILE.x2.q = 4;
+		`REGFILE.x3.q = 2;
 		
 		// test cases
 		`IROM(START_ADDR + 0) = {`ADD,  `X1, `X0,  8'd0};
-		`IROM(START_ADDR + 1) = {`ADD,  `X0, `X1,  8'd0};
-		
+		`IROM(START_ADDR + 1) = {`SUB,  `X1, `X0,  8'd0};
+		`IROM(START_ADDR + 2) = {`AND,  `X2, `X3,  8'd0};
+		`IROM(START_ADDR + 3) = {`OR,	`X3, `X1,  8'd0};
 		// check result
-		check_result_rf(`X0, `DWIDTH'd7, "ADD" );
-
+		check_result_rf(`X1, `DWIDTH'd3, "ADD" );
+		check_result_rf(`X1, `DWIDTH'd1, "SUB");
+		check_result_rf(`X2, `DWIDTH'd0, "AND");
+		check_result_rf(`X3, `DWIDTH'd6, "OR");
 		all_tests_passed = 1'b1;
 
 		#100;

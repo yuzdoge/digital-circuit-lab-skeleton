@@ -6,7 +6,7 @@ module alu #(
 )(
 	input clk, rst_n, en_in,
 	input  [2 : 0] alu_func,
-	input  [DWIDTH - 1 : 0] alu_a, alu_b, alu_imm,
+	input  [DWIDTH - 1 : 0] alu_a, alu_b, //alu_imm,
 	output reg [DWIDTH - 1 : 0] alu_out,
 	output reg en_out
 );
