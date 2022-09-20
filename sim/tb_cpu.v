@@ -1,5 +1,6 @@
 `timescale 1 ns/1 ns
 `include  "../rtl/opcode.vh"
+`include  "../rtl/alufunc.vh"
 
 `define IROM(addr) cpu.irom_i.sync_rom_i.mem[addr]
 
@@ -129,7 +130,7 @@ module tb_cpu();
 		// test cases
 		`IROM(START_ADDR + 0) = {`ADD,  `X1, `X0,  8'd0};
 		`IROM(START_ADDR + 1) = {`ADD,  `X0, `X1,  8'd0};
-
+		
 		// check result
 		check_result_rf(`X0, `DWIDTH'd7, "ADD" );
 

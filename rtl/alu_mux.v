@@ -7,7 +7,7 @@ module alu_mux #(
 	input alu_in_sel,
 	input  [DWIDTH - 1 : 0] rd_q, rs_q,
 	input  [7 : 0] offset,
-	output reg [DWIDTH - 1 : 0] alu_a, alu_b,
+	output reg [DWIDTH - 1 : 0] alu_a, alu_b, alu_imm,
 	output reg en_out
 );
 
