@@ -17,10 +17,15 @@ module alu_mux #(
 			alu_b <= 16'd0;
 			en_out  <= 1'b0;
 		end		
-		else if(en_in == 1'b1) begin
+		else if(en_in == 1'b1 && alu_in_sel == 1'b1) begin
 			en_out  <= 1'b1;
 			alu_a <= rd_q;
 			alu_b <= rs_q;					
+		end
+		else if(en_in == 1'b1 && alu_in_sel == 1'b0) begin
+			en_out  <= 1'b1;
+			alu_a <= rd_q;
+			alu_b <= {{(DWIDTH-8){1'b0}}, offset[7:0]};
 		end
 		else begin
 			en_out  <= 1'b0;

@@ -21,6 +21,12 @@ module alu #(
 			en_out  <= 1'b1;
 			case (alu_func)
 				`ALU_ADD:  alu_out <= alu_a + alu_b;
+				`ALU_SUB:  alu_out <= alu_a - alu_b;
+				`ALU_ADDI: alu_out <= alu_a + alu_b;
+				`ALU_AND: alu_out <= alu_a & alu_b;
+				`ALU_ANDI: alu_out <= alu_a & alu_b;
+				`ALU_OR: alu_out <= alu_a | alu_b;
+				//`ALU_XOR: alu_out <= alu_a ^ alu_b;
 				default:   alu_out <= defaultval;
 			endcase
 		end
