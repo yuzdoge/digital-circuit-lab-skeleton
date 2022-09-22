@@ -137,7 +137,7 @@ module tb_cpu();
 		`IROM(START_ADDR + 1) = {`ANDI,  `X0, `X0,  8'd1};
 		// check result
 		//check_result_rf(`X1, `DWIDTH'd3, "ADD" );
-		//check_result_rf(`X1, `DWIDTH'd1, "SUB");
+		//check_result_rf(`X1, `DWIDTH'd2, "SUB");
 		//check_result_rf(`X2, `DWIDTH'd0, "AND");
 		//check_result_rf(`X3, `DWIDTH'd6, "OR");
 		check_result_rf(`X1, `DWIDTH'd2, "ADDI" );

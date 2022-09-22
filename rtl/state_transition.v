@@ -181,7 +181,6 @@ module state_transition (
 							alu_in_sel = 1'b0;
 							alu_func = `ALU_ANDI;
 						end
-						
 						default: begin
 							en_fetch = 1'b0;
 							en_group = 1'b1;
