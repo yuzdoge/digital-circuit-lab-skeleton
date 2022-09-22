@@ -20,7 +20,7 @@ module state_transition (
 	reg en_group_reg, en_group;
 	reg en_pc_reg,    en_pc;
 
-	reg [3 : 0] current_state, next_state;
+	reg [3 : 0] current_state, next_state;//
 
 	localparam INIT= 4'b0000;
 	localparam IF = 4'b0001;
@@ -135,6 +135,51 @@ module state_transition (
 							reg_en = 4'b0000;
 							alu_in_sel = 1'b1;
 							alu_func = `ALU_ADD;
+						end
+						`SUB: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b1;
+							alu_func = `ALU_SUB;
+						end
+						`AND: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b1;
+							alu_func = `ALU_AND;
+						end
+						`OR: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b1;
+							alu_func = `ALU_OR;
+						end
+						`ADDI: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b0;
+							alu_func = `ALU_ADDI;
+						end
+						`ANDI: begin
+							en_fetch = 1'b0;
+							en_group = 1'b1;
+							en_pc = 1'b0;
+							pc_ctrl = 2'b00;
+							reg_en = 4'b0000;
+							alu_in_sel = 1'b0;
+							alu_func = `ALU_ANDI;
 						end
 						default: begin
 							en_fetch = 1'b0;
