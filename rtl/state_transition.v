@@ -170,7 +170,7 @@ module state_transition (
 							pc_ctrl = 2'b00;
 							reg_en = 4'b0000;
 							alu_in_sel = 1'b0;
-							alu_func = `ALU_ADDI;
+							alu_func = `ALU_ADD;
 						end
 						`ANDI: begin
 							en_fetch = 1'b0;
@@ -179,7 +179,7 @@ module state_transition (
 							pc_ctrl = 2'b00;
 							reg_en = 4'b0000;
 							alu_in_sel = 1'b0;
-							alu_func = `ALU_ANDI;
+							alu_func = `ALU_AND;
 						end
 						default: begin
 							en_fetch = 1'b0;
